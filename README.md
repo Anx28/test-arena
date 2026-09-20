@@ -14,7 +14,7 @@
 | # | Лабораторная | Тема | Что получится в итоге |
 |---|--------------|------|------------------------|
 | 1 | [001-first-dockerfile](labs/001-first-dockerfile/) ✅ | Первый Dockerfile | Собрал образ Flask-приложения, запустил контейнер, проверил работоспособность |
-| 2 | 🚧 002-dockerfile-best-practices | Лучшие практики Dockerfile | Меньший образ, non-root, healthcheck, multi-stage |
+| 2 | [002-dockerfile-best-practices](labs/002-dockerfile-best-practices/) ✅ | Лучшие практики Dockerfile | Меньший образ, non-root, healthcheck, multi-stage |
 | 3 | 🚧 003-docker-compose | Docker Compose | Мультисервисный проект одной командой: сети, томы, nginx |
 | 4 | 🚧 004-registry-and-debugging | Регистры и отладка | Образ в GHCR, `docker logs` / `exec` / `inspect` как инструменты |
 | 5 | 🚧 005-ci-github-actions | CI: GitHub Actions | На каждый push в ветку собирается образ в CI |
@@ -71,12 +71,20 @@ test-arena/
 ├── docs/
 │   └── plan.md                      # полный план курса (8 лабораторных)
 └── labs/
-    └── 001-first-dockerfile/
-        ├── README.md                # задание, требования, шаги, проверка, вопросы
-        ├── .dockerignore            # пример: что НЕ должно попасть в образ
-        └── app/                     # код приложения (то, что попадёт в образ)
-            ├── app.py               # Flask: два эндпоинта / и /health, порт 8000
-            └── requirements.txt     # зависимости приложения
+    ├── 001-first-dockerfile/
+    │   ├── README.md                # задание, требования, шаги, проверка, вопросы
+    │   ├── .dockerignore            # пример: что НЕ должно попасть в образ
+    │   ├── Dockerfile               # стартовое решение лабы 001
+    │   └── app/                     # код приложения (то, что попадёт в образ)
+    │       ├── app.py               # Flask: два эндпоинта / и /health, порт 8000
+    │       └── requirements.txt     # зависимости приложения
+    └── 002-dockerfile-best-practices/
+        ├── README.md                # задание: размер, non-root, healthcheck, multi-stage
+        ├── .dockerignore            # что НЕ должно попасть в контекст сборки
+        ├── Dockerfile               # стартовая точка: намеренно «толстый» вариант
+        └── app/                     # то же Flask-приложение, что в лабе 001
+            ├── app.py
+            └── requirements.txt
 ```
 
 Каждая последующая лабораторная будет появляться в `labs/NNN-название/` по той же схеме.
